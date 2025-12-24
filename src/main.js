@@ -1,22 +1,25 @@
 /**
- * FANTOM-MATIC.BLOG - JS Core
- * 2025 Edition
+ * FANTOM-MATIC — Core Engine 2025
+ * Инновационная образовательная платформа
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- 1. ИНИЦИАЛИЗАЦИЯ ВНЕШНИХ БИБЛИОТЕК ---
+  // ==========================================
+  // 1. ИНИЦИАЛИЗАЦИЯ БИБЛИОТЕК
+  // ==========================================
 
   // Иконки Lucide
   if (typeof lucide !== 'undefined') {
       lucide.createIcons();
   }
 
-  // Плавный скролл Lenis
+  // Lenis Smooth Scroll (Плавный скролл)
   const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true
+      smoothWheel: true,
+      orientation: 'vertical',
   });
 
   function raf(time) {
@@ -26,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(raf);
 
 
-  // --- 2. МОБИЛЬНОЕ МЕНЮ (BURGER) ---
+  // ==========================================
+  // 2. МОБИЛЬНОЕ МЕНЮ (NAV & BURGER)
+  // ==========================================
 
   const burger = document.getElementById('burger-menu');
   const nav = document.getElementById('main-nav');
@@ -38,11 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
           const isActive = nav.classList.toggle('active');
           burger.classList.toggle('active');
 
-          // Блокируем скролл при открытом меню
+          // Блокировка скролла при открытом меню
           body.style.overflow = isActive ? 'hidden' : '';
       });
 
-      // Закрытие меню при клике на ссылку (для якорей)
+      // Закрытие при клике на ссылки (якоря)
       navLinks.forEach(link => {
           link.addEventListener('click', () => {
               nav.classList.remove('active');
@@ -53,7 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // --- 3. HERO: СМЕНА СЛОВ В ЗАГОЛОВКЕ ---
+  // ==========================================
+  // 3. HERO: СМЕНА СЛОВ В ЗАГОЛОВКЕ
+  // ==========================================
 
   const wordSwitcher = document.getElementById('changing-word');
   if (wordSwitcher) {
@@ -61,125 +68,152 @@ document.addEventListener('DOMContentLoaded', () => {
       let wordIndex = 0;
 
       setInterval(() => {
-          // Плавное исчезновение
           wordSwitcher.style.opacity = '0';
-          wordSwitcher.style.transform = 'translateY(10px)';
+          wordSwitcher.style.transform = 'translateY(15px)';
 
           setTimeout(() => {
               wordIndex = (wordIndex + 1) % words.length;
               wordSwitcher.textContent = words[wordIndex];
 
-              // Плавное появление
               wordSwitcher.style.opacity = '1';
               wordSwitcher.style.transform = 'translateY(0)';
-          }, 500); // Половина времени перехода
-      }, 3000);
+          }, 500);
+      }, 3500);
   }
 
 
-  // --- 4. КОНТАКТНАЯ ФОРМА: ВАЛИДАЦИЯ И КАПЧА ---
+  // ==========================================
+  // 4. КОНТАКТНАЯ ФОРМА (ФРАНЦИЯ 2025)
+  // ==========================================
 
   const contactForm = document.getElementById('contact-form');
   const phoneInput = document.getElementById('phone-input');
   const successMsg = document.getElementById('form-success');
-  const captchaQuestion = document.getElementById('captcha-question');
-  const captchaAnswerInput = document.getElementById('captcha-answer');
+  const captchaLabel = document.getElementById('captcha-question');
+  const captchaInput = document.getElementById('captcha-answer');
 
-  // Генерация капчи (Франция, 2025)
-  let num1 = Math.floor(Math.random() * 10) + 1;
-  let num2 = Math.floor(Math.random() * 5) + 1;
-  let correctSum = num1 + num2;
+  // Математическая капча
+  let n1 = Math.floor(Math.random() * 10) + 1;
+  let n2 = Math.floor(Math.random() * 9) + 1;
+  let sum = n1 + n2;
 
-  if (captchaQuestion) {
-      captchaQuestion.textContent = `${num1} + ${num2}`;
+  if (captchaLabel) {
+      captchaLabel.textContent = `${n1} + ${n2}`;
   }
 
-  // Валидация телефона (только цифры и плюс в начале)
+  // Валидация телефона (только цифры и +)
   if (phoneInput) {
       phoneInput.addEventListener('input', (e) => {
-          let value = e.target.value;
-          // Разрешаем + только в начале, остальное только цифры
-          e.target.value = value.replace(/(?!^\+)[^\d]/g, '');
+          e.target.value = e.target.value.replace(/(?!^\+)[^\d]/g, '');
       });
   }
 
-  // Обработка отправки
+  // Обработка отправки формы
   if (contactForm) {
       contactForm.addEventListener('submit', (e) => {
           e.preventDefault();
 
           // Проверка капчи
-          if (parseInt(captchaAnswerInput.value) !== correctSum) {
+          if (parseInt(captchaInput.value) !== sum) {
               alert('Пожалуйста, решите математический пример правильно.');
               return;
           }
 
-          // Имитация отправки (AJAX)
-          const submitBtn = contactForm.querySelector('button[type="submit"]');
-          const originalBtnText = submitBtn.innerHTML;
+          // Анимация отправки
+          const btn = contactForm.querySelector('button[type="submit"]');
+          const originalText = btn.innerHTML;
+          btn.disabled = true;
+          btn.innerHTML = '<span class="loader-simple">Отправка...</span>';
 
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = 'Отправка...';
-
+          // Имитация задержки сети (Франция -> Сервер)
           setTimeout(() => {
-              // Скрываем форму и показываем успех
-              contactForm.style.display = 'none';
-              successMsg.style.display = 'flex';
+              contactForm.style.transition = 'opacity 0.5s ease';
+              contactForm.style.opacity = '0';
 
-              // Плавная прокрутка к сообщению об успехе
-              lenis.scrollTo('#contact', { offset: -50 });
+              setTimeout(() => {
+                  contactForm.style.display = 'none';
+                  successMsg.style.display = 'flex'; // Гарантированный показ
 
-              console.log('Форма успешно отправлена (симуляция)');
-          }, 1500);
+                  // Перерисовка иконок в сообщении успеха
+                  if (window.lucide) lucide.createIcons();
+
+                  // Скролл к сообщению
+                  lenis.scrollTo('#contact', { offset: -100 });
+              }, 500);
+          }, 1800);
       });
   }
 
 
-  // --- 5. COOKIE POPUP ---
+  // ==========================================
+  // 5. COOKIE POPUP (GDPR READY)
+  // ==========================================
 
-  const createCookiePopup = () => {
-      if (localStorage.getItem('cookies-accepted')) return;
+  const initCookies = () => {
+      if (localStorage.getItem('fantom_matic_cookies')) return;
 
       const popup = document.createElement('div');
       popup.className = 'cookie-popup';
       popup.innerHTML = `
-          <div class="cookie-popup__content">
-              <p>Этот сайт использует cookies для улучшения работы. Подробнее — в нашей <a href="cookies.html">Cookie политике</a>.</p>
-              <button class="btn btn--primary" id="accept-cookies">Принять</button>
+          <div class="cookie-popup__header">
+              <div class="cookie-popup__icon"><i data-lucide="shield-check"></i></div>
+              <p>Мы используем cookies для работы платформы во Франции. <a href="./cookies.html">Подробнее</a></p>
+          </div>
+          <div class="cookie-popup__actions">
+              <button class="btn btn--primary" id="c-accept">Принять</button>
+              <button class="btn btn--ghost" id="c-reject">Отклонить</button>
           </div>
       `;
-      body.appendChild(popup);
 
-      document.getElementById('accept-cookies').addEventListener('click', () => {
-          localStorage.setItem('cookies-accepted', 'true');
-          popup.classList.add('cookie-popup--hidden');
-          setTimeout(() => popup.remove(), 500);
-      });
+      document.body.appendChild(popup);
+      if (window.lucide) lucide.createIcons();
+
+      // Появление
+      setTimeout(() => popup.classList.add('is-show'), 2500);
+
+      const closePopup = () => {
+          popup.classList.remove('is-show');
+          localStorage.setItem('fantom_matic_cookies', 'true');
+          setTimeout(() => popup.remove(), 700);
+      };
+
+      document.getElementById('c-accept').addEventListener('click', closePopup);
+      document.getElementById('c-reject').addEventListener('click', closePopup);
   };
 
-  // Показываем куки через 2 секунды после загрузки
-  setTimeout(createCookiePopup, 2000);
+  initCookies();
 
 
-  // --- 6. ЭФФЕКТ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ (REVEAL) ---
+  // ==========================================
+  // 6. SCROLL REVEAL (АНИМАЦИЯ ПОЯВЛЕНИЯ)
+  // ==========================================
 
-  const observerOptions = {
-      threshold: 0.15
-  };
+  const revealItems = document.querySelectorAll('.feature-card, .blog-card, .section-title, .about__image');
 
   const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
           if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
+              entry.target.classList.add('revealed');
               revealObserver.unobserve(entry.target);
           }
       });
-  }, observerOptions);
+  }, { threshold: 0.15 });
 
-  // Элементы для анимации (заголовки, карточки)
-  const elementsToReveal = document.querySelectorAll('.feature-card, .blog-card, .section-title, .about__image');
-  elementsToReveal.forEach(el => {
-      el.classList.add('reveal-init');
-      revealObserver.observe(el);
+  revealItems.forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(40px)';
+      item.style.transition = 'all 0.9s cubic-bezier(0.22, 1, 0.36, 1)';
+      revealObserver.observe(item);
   });
+
+  // Динамический класс для анимации через observer
+  const style = document.createElement('style');
+  style.innerHTML = `
+      .revealed {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+      }
+  `;
+  document.head.appendChild(style);
+
 });

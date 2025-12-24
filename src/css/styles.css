@@ -684,3 +684,92 @@ section {
   flex-direction: column;
   justify-content: center;
 }
+/* --- COOKIE POPUP: NEON FUTURISM --- */
+.cookie-popup {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.7); /* Эффект стекла */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 242, 255, 0.3); /* Неоновая граница */
+  border-radius: 24px;
+  padding: 25px;
+  z-index: 10000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+              0 0 20px rgba(0, 242, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transform: translateY(150%);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s;
+  opacity: 0;
+}
+
+.cookie-popup.is-show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cookie-popup__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cookie-popup__icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-main);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.cookie-popup p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.cookie-popup a {
+  color: var(--accent-purple);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cookie-popup__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.cookie-popup .btn {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.btn--ghost {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+.btn--ghost:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 576px) {
+  .cookie-popup {
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      max-width: none;
+  }
+}
