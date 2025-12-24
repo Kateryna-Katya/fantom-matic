@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/fantom-matic/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/fantom-matic/assets/styles-BRMb-p19.css">
+    <link rel="stylesheet" crossorigin href="/fantom-matic/assets/styles-BQVyy43l.css">
   </head>
   <body>
     <header class="header">
@@ -20,29 +20,27 @@
           Fantom-Matic
       </a>
 
-      <div class="menu-overlay">
-          <nav class="nav">
-              <ul class="nav__list">
-                  <li><a href="#hero" class="nav__link">Главная</a></li>
-                  <li><a href="#about" class="nav__link">Платформа</a></li>
-                  <li><a href="#features" class="nav__link">Возможности</a></li>
-                  <li><a href="#innovation" class="nav__link">Инновации</a></li>
-                  <li><a href="#blog" class="nav__link">Обучение</a></li>
-                  <li class="mobile-only">
-                      <a href="#contact" class="btn btn--primary">Начать сейчас</a>
-                  </li>
-              </ul>
-          </nav>
-      </div>
+      <nav class="nav" id="main-nav">
+          <ul class="nav__list">
+              <li><a href="#hero" class="nav__link">Главная</a></li>
+              <li><a href="#about" class="nav__link">Платформа</a></li>
+              <li><a href="#features" class="nav__link">Возможности</a></li>
+              <li><a href="#innovation" class="nav__link">Инновации</a></li>
+              <li><a href="#blog" class="nav__link">Обучение</a></li>
+              <li class="mobile-only">
+                  <a href="#contact" class="btn btn--primary nav__link">Начать сейчас</a>
+              </li>
+          </ul>
+      </nav>
 
       <div class="header__actions">
           <a href="#contact" class="btn btn--primary desktop-only">
-              Начать
-              <i data-lucide="arrow-up-right"></i>
+              Начать <i data-lucide="arrow-up-right"></i>
           </a>
-          <button class="burger" id="burger-menu">
-              <span class="burger__line"></span>
-              <span class="burger__line"></span>
+          <button class="burger" id="burger-menu" aria-label="Открыть меню">
+              <span></span>
+              <span></span>
+              <span></span>
           </button>
       </div>
   </div>
@@ -73,7 +71,7 @@
   <div class="container">
       <div class="about__grid">
           <div class="about__image">
-              <img src="img/placeholder.png" alt="Platform UI">
+              <img src="/fantom-matic/assets/one-DMi2Mtr2.jpg" alt="Platform UI">
               <div class="about__glass-card">
                   <span>99%</span>
                   <p>эффективность методик</p>
@@ -141,21 +139,81 @@
       </div>
       <div class="blog__grid">
           <article class="blog-card">
-              <div class="blog-card__img"><img src="img/placeholder.png" alt="Blog"></div>
+              <div class="blog-card__img"><img src="/fantom-matic/assets/two-DKSEFGhD.jpg" alt="Blog"></div>
               <div class="blog-card__body">
                   <span class="blog-card__tag">Инновации</span>
                   <h3>Как AI меняет рынок труда во Франции в 2025 году</h3>
-                  <a href="#" class="blog-card__link">Читать далее</a>
+                  <a href="#contact" class="blog-card__link">Читать далее</a>
               </div>
           </article>
           <article class="blog-card">
-              <div class="blog-card__img"><img src="img/placeholder.png" alt="Blog"></div>
+              <div class="blog-card__img"><img src="/fantom-matic/assets/three-CVuGDuOI.jpg" alt="Blog"></div>
               <div class="blog-card__body">
                   <span class="blog-card__tag">Практика</span>
                   <h3>Методологии, доказавшие свою эффективность</h3>
-                  <a href="#" class="blog-card__link">Читать далее</a>
+                  <a href="#contact" class="blog-card__link">Читать далее</a>
               </div>
           </article>
+      </div>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="container">
+      <div class="contact__grid">
+          <div class="contact__info">
+              <div class="badge">Доступно во Франции</div>
+              <h2 class="section-title">Начните <span class="text-gradient">сейчас</span></h2>
+              <p>Получите доступ к передовой цифровой инфраструктуре. Поддержка на русском языке для резидентов ЕС.</p>
+
+              <div class="contact__methods">
+                  <div class="contact__item">
+                      <div class="contact__icon"><i data-lucide="mail"></i></div>
+                      <div>
+                          <span>Пишите нам</span>
+                          <p>hello@fantom-matic.blog</p>
+                      </div>
+                  </div>
+                  <div class="contact__item">
+                      <div class="contact__icon"><i data-lucide="phone"></i></div>
+                      <div>
+                          <span>Звоните (Paris)</span>
+                          <p>+33 1 70 36 39 00</p>
+                      </div>
+                  </div>
+                  <div class="contact__item">
+                      <div class="contact__icon"><i data-lucide="map-pin"></i></div>
+                      <div>
+                          <span>Наш офис</span>
+                          <p>127 Av. des Champs-Élysées, 75008 Paris</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="contact__form-wrapper">
+              <div class="form__message" id="form-success">
+                  <i data-lucide="check-circle"></i>
+                  <h4>Заявка принята!</h4>
+                  <p>Мы свяжемся с вами в течение 15 минут.</p>
+              </div>
+
+              <form class="form" id="contact-form">
+                  <div class="form__group">
+                      <input type="text" placeholder="Ваше имя" class="form__input" required>
+                  </div>
+                  <div class="form__group">
+                      <input type="email" placeholder="Email" class="form__input" required>
+                  </div>
+                  <div class="form__group">
+                      <input type="tel" id="phone-input" placeholder="Телефон (только цифры)" class="form__input" required>
+                  </div>
+                  <div class="form__captcha">
+                      <label>Сколько будет <span id="captcha-question">...</span>?</label>
+                      <input type="number" id="captcha-answer" class="form__input" style="width: 80px;" required>
+                  </div>
+                  <button type="submit" class="btn btn--primary btn--full">Отправить запрос</button>
+              </form>
+          </div>
       </div>
   </div>
 </section>
@@ -199,7 +257,7 @@
               <h4 class="footer__title">Контакты</h4>
               <div class="footer__contact-item">
                   <i data-lucide="phone"></i>
-                  <a href="tel:+493098320511">+49 (30) 983-205-11</a>
+                  <a href="tel:+33 1 70 36 39 00">+33 1 70 36 39 00</a>
               </div>
               <div class="footer__contact-item">
                   <i data-lucide="mail"></i>
@@ -207,7 +265,7 @@
               </div>
               <div class="footer__contact-item">
                   <i data-lucide="map-pin"></i>
-                  <span>Friedrichstraße 176, 10117 Berlin, DE</span>
+                  <span>127 Av. des Champs-Élysées, 75008 Paris, France</span>
               </div>
           </div>
       </div>
