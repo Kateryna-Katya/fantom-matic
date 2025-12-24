@@ -8,4 +8,4 @@
               <button class="btn btn--ghost" id="c-rej">Отклонить</button>
           </div>
       `,document.body.appendChild(e),window.lucide&&lucide.createIcons(),setTimeout(()=>e.classList.add("is-show"),2e3);const n=()=>{e.classList.remove("is-show"),localStorage.setItem("fantom_cookies_accepted","true"),setTimeout(()=>e.remove(),600)};document.getElementById("c-acc").addEventListener("click",n),document.getElementById("c-rej").addEventListener("click",n)})();const h=new IntersectionObserver(e=>{e.forEach(n=>{n.isIntersecting&&n.target.classList.add("revealed")})},{threshold:.1});document.querySelectorAll(".feature-card, .blog-card, .section-title, .about__image").forEach(e=>{e.style.opacity="0",e.style.transform="translateY(30px)",e.style.transition="all 0.8s ease-out",h.observe(e)});const p=document.createElement("style");p.innerHTML=".revealed { opacity: 1 !important; transform: translateY(0) !important; }",document.head.appendChild(p)});
-//# sourceMappingURL=main-CySvCsWS.js.map
+//# sourceMappingURL=main-DFwORSS9.js.map
