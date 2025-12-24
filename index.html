@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/fantom-matic/assets/main-DaHlGlNF.js"></script>
-    <link rel="stylesheet" crossorigin href="/fantom-matic/assets/main-BBphhf12.css">
+    <script type="module" crossorigin src="/fantom-matic/assets/main-CySvCsWS.js"></script>
+    <link rel="stylesheet" crossorigin href="/fantom-matic/assets/main-i3qgisO1.css">
   </head>
   <body>
     <header class="header">
@@ -198,21 +198,39 @@
               </div>
 
               <form class="form" id="contact-form">
-                  <div class="form__group">
-                      <input type="text" placeholder="Ваше имя" class="form__input" required>
-                  </div>
-                  <div class="form__group">
-                      <input type="email" placeholder="Email" class="form__input" required>
-                  </div>
-                  <div class="form__group">
-                      <input type="tel" id="phone-input" placeholder="Телефон (только цифры)" class="form__input" required>
-                  </div>
-                  <div class="form__captcha">
-                      <label>Сколько будет <span id="captcha-question">...</span>?</label>
-                      <input type="number" id="captcha-answer" class="form__input" style="width: 80px;" required>
-                  </div>
-                  <button type="submit" class="btn btn--primary btn--full">Отправить запрос</button>
-              </form>
+                <div class="form__group">
+                    <input type="text" name="name" class="form__input" placeholder="Ваше имя" required>
+                </div>
+                <div class="form__group">
+                    <input type="email" name="email" class="form__input" placeholder="Email" required>
+                </div>
+                <div class="form__group">
+                    <input type="tel" name="phone" id="phone-input" class="form__input" placeholder="Телефон (только цифры)" required>
+                </div>
+
+                <div class="form__captcha">
+                    <label>Сколько будет <span id="captcha-question">...</span>?</label>
+                    <input type="number" id="captcha-answer" class="form__input" style="width: 100px;" required>
+                </div>
+
+                <div class="form__agree">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="agree-check" required>
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">Я согласен с <a href="personal-data-policy.html">политикой обработки данных</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--full">
+                    <span>Отправить запрос</span>
+                </button>
+            </form>
+
+            <div class="form__message" id="form-success" style="display: none;">
+                <i data-lucide="party-popper"></i>
+                <h3>Заявка успешно отправлена!</h3>
+                <p>Наш менеджер из офиса в Париже свяжется с вами в ближайшее время.</p>
+            </div>
           </div>
       </div>
   </div>
